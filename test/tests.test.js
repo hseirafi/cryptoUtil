@@ -1,7 +1,7 @@
-
+"use Strict"; 
+jest.mock('../request');
 import { hashPassword, randomPassWord, verifyPassword } from "../util";
 import Config from "../conf";
-
 it("randomPassword generator should generate an 8 character string, when no argments are passed", () => {
   let tempPasswrd = Math.random()
     .toString()
@@ -9,7 +9,6 @@ it("randomPassword generator should generate an 8 character string, when no argm
   expect(randomPassWord().length).toEqual(8);
 });
 
-it("randomPassword should generate a random string whose length is the value of the arguemnt passed", () => {
   let tempPasswrd = Math.random()
     .toString()
     .slice(-Config.VERIFICATION_CODE_LENGTH);
