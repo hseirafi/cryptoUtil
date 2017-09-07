@@ -123,14 +123,7 @@ export const randomPassWord = len => {
 	
 
 
-// function joe(str) {
-// 	let mo = 5;
-// 	str.forEach(item => mo += 5);
-// 	console.log(mo);
-// return    mo
-// 	}
 
-// joe(map);
 
 let tempPasswrd = Math.random()
   .toString()
