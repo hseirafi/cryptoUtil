@@ -18,24 +18,6 @@ it("randomPassword should generate an 8 character string, when 8 int is passed",
 
 
 
-
-
-
-
-
-it("randomPassword should generate 9 character string, when any number between 6 and 20 is passed", () => {
- 
-  expect(randomPassWord(9).length).toEqual(9);
-});
-
-it("randomPassword generator should generate an 8 character string, when no argments are passed", () => {
-  let tempPasswrd = Math.random()
-    .toString()
-    .slice(-Config.VERIFICATION_CODE_LENGTH);
-  expect(randomPassWord().length).toEqual(8);
-});
-
-
 // let tempPasswrd = Math.random()
 // .toString()
 // .slice(-Config.VERIFICATION_CODE_LENGTH);

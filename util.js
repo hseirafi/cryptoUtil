@@ -20,7 +20,7 @@ const randomString = len => {
   }
   return pass;
 };
-function *makeRandomNumberGenerator(val) {
+function *indexingGenerator(val) {
   let map = {};
   let resetCount = 20;
   while (true) {
@@ -36,7 +36,7 @@ function *makeRandomNumberGenerator(val) {
     delete map[resetCount];
     }
 };
-const rng = makeRandomNumberGenerator();
+const rng = indexingGenerator();
 
 export const randomPassWord = len => typeof len === "undefined" ? reg.next().value: callback =>
   typeof callback === 'undefined' ? 'handel error:callback' : Number.isInteger(len) && len >= 5 ?
