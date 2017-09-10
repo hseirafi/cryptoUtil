@@ -2,7 +2,7 @@
 .*/node_modules/babel.*
 .*/node_modules/tap/*
 .*/node_modules/documentation/*
-
+/test/*
 [libs]
 /node_modules/crypto
 /node_modules
