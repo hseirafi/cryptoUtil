@@ -1,15 +1,12 @@
 import { fromNullable, All} from './helpers';
 const crypto = require(`crypto`),
   Config = require(`./conf`),
-
   // larger salt means hashed passwords are more resistant to rainbow table, but
   // you get diminishing returns pretty fa    // more iterations means an attacker has to take longer to brute force an
   // individual password, so larger is better. however, larger also means longer
   // to hash the password. tune so that hashing the password takes about a
   // secondst 
-  config = { hashBytes: 32, saltByptes: 16, iterations: 27274, algo: `sha512`, encoding: `hex` }; 
-  
-
+config = { hashBytes: 32, saltByptes: 16, iterations: 27274, algo: `sha512`, encoding: `hex` }; 
 const randomString = len => {
   len = (len || Config.RANDOM_PASS_MAX_LEN) + 1;
   const possible = [`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `k`, `l`, `m`, `n`, `o`, `p`, `q`, `r`, `s`, `t`, `u`, `w`, `x`, `y`, `z`, `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`, `J`, `K`, `L`, `M`, `N`, `O`, `P`, `Q`, `R`, `S`, `T`, `U`, `W`, `X`, `Y`, `Z`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `.`, `_`, `!`],
@@ -20,28 +17,13 @@ const randomString = len => {
   }
   return pass;
 };
-function *indexingGenerator(val) {
-  let map = {};
-  let resetCount = 20;
-  while (true) {
-    if (!map[1]) {
-      let count = 20;
-      resetCount = 20; 
-      while (--count) {
-        map[count] = randomString(val); 
-      }
-    };
-    resetCount--;
-    yield map[resetCount];
-    delete map[resetCount];
-    }
-};
-const rng = indexingGenerator();
 
-export const randomPassWord = len => typeof len === "undefined" ? reg.next().value: callback =>
+
+const rng = indexingGenerator();
+export const randomPassWord = len => typeof len === "undefined" ? randomString(): callback =>
   typeof callback === 'undefined' ? 'handel error:callback' : Number.isInteger(len) && len >= 5 ?
     callback((() => randomString(len))('you need to handle success/err on argument pass'))
-    : callback(null, "must be an int greater than 5");
+    :callback(null, "must be an int greater than 5");
 
 export const hashPassword = password => callback =>
   crypto.randomBytes(
@@ -66,7 +48,6 @@ export const hashPassword = password => callback =>
                 })
           ))
   );
-  
   export const verifyPassword = password => hash => salt => callback =>
     crypto.pbkdf2(
       password,
@@ -84,9 +65,6 @@ let tempPasswrd = Math.random()
   .toString()
   .slice(-Config.VERIFICATION_CODE_LENGTH);
    
-
-
-   
 // function curry(a) {
 //   console.log(arguments)
 //   console.log(this)
@@ -101,10 +79,6 @@ let tempPasswrd = Math.random()
 //    return  a+b}}
 
   //  console.log(curry(5)(6))
-
-
-
-
 
   //  function curry(fn, length) {
   //   length = length || fn.length;
