@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "util.js",
-  "scripts": {
-    "test": "npm run test/tests.test.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hseirafi/cryptoUtil.git"
+  },
+  "scripts": {
+    "test": "jest tests.test.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,17 +26,30 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "flow-bin": "^0.54.1",
-    "jest": "^21.0.1",
+    "jest": "^21.0.2",
+    "jest-babel": "^1.0.1",
     "jest-plugins": "^2.2.1",
     "jsdom-quokka-plugin": "^1.0.0"
   },
   "activationEvents": [
     "workspaceContains:node_modules/.bin/jest",
-    "workspaceContains:node_modules/react-scripts/node_modules/.bin/jest",
     "onCommand:io.orta.jest.start"
   ],
+  "jest": {
+    "verbose": true,
+    "testEnviorment":"node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],"transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+    
+
+  },
   "dependencies": {
-    "crypto": "^1.0.1"
+    "babel-jest": "^21.0.2",
+    "crypto": "^1.0.1",
+    "jest-cli": "^21.0.2"
   },
   "quokka": {
     "babel": true,
